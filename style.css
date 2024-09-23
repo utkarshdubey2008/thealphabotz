@@ -10,23 +10,68 @@ header {
     background-color: #f00; /* Red */
     color: #fff;
     padding: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+h1 {
     margin: 0;
 }
 
-nav li {
-    display: inline-block;
-    margin: 0 10px;
+nav {
+    position: relative;
 }
 
-nav a {
+.menu-icon {
+    display: none; /* Hide by default */
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: transform 0.3s ease;
+}
+
+.menu-icon.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(-45deg);
+}
+
+.menu-icon.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-icon.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(45deg);
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Make navigation links horizontal */
+    gap: 20px; /* Space between links */
+}
+
+.nav-links li {
+    display: inline-block; /* For the horizontal layout */
+}
+
+.nav-links a {
     text-decoration: none;
     color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #663399; /* Purple on hover */
 }
 
 main {
@@ -62,4 +107,19 @@ footer {
     background-color: #800080; /* Purple */
     text-align: center;
     padding: 10px;
+    position: fixed; /* Fixed to the bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Responsive Design (for smaller screens) */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide navigation links on smaller screens */
+    }
+
+    .menu-icon {
+        display: block; /* Show the three-dot menu icon */
+    }
 }
